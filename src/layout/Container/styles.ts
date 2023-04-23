@@ -1,8 +1,11 @@
-import {StyleSheet} from 'react-native/types';
+import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
   container: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingRight: 24,
+    paddingLeft: 24,
   },
 });
