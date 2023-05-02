@@ -1,34 +1,16 @@
 import React from 'react';
-import {TextInput} from 'react-native';
+import {TextInput, TextInputProps} from 'react-native';
 import {styles} from './styles';
 
-export type CustomInputType<T> = {
-  placeholder: string;
-  state: T;
-  setState: React.Dispatch<React.SetStateAction<T>>;
-  name: keyof T;
+export type CustomInputType = {
+  inputOption?: TextInputProps;
+  //  state: T;
+  //  setState: React.Dispatch<React.SetStateAction<T>>;
+  //  name: keyof T;
 };
 
-function CustomInput<K extends Record<any, string | undefined>>({
-  placeholder,
-  state,
-  setState,
-  name,
-}: CustomInputType<K>): JSX.Element {
-  const changeState = (text: string) => {
-    const newState = {...state};
-    newState[name] = text as K[keyof K];
-    setState(newState);
-  };
-
-  return (
-    <TextInput
-      style={styles.input}
-      placeholder={placeholder}
-      value={state[name] ? state[name] : undefined}
-      onChangeText={changeState}
-    />
-  );
+function CustomInput({inputOption}: CustomInputType): JSX.Element {
+  return <TextInput {...inputOption} style={styles.input} />;
 }
 
 export default CustomInput;
