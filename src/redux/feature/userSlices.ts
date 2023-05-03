@@ -15,7 +15,7 @@ const userSlice = createSlice({
         name: action.payload.name,
       };
 
-      state = newUser;
+      Object.assign(state, newUser);
     },
   },
 });

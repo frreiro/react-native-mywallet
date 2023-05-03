@@ -2,6 +2,7 @@ import {Formik} from 'formik';
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {Text, TouchableOpacity} from 'react-native';
+import {Link} from '@react-navigation/native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 import {styles} from './styles';
@@ -34,7 +35,7 @@ function SignIn({navigation}: Props): JSX.Element {
     <Container>
       <Text>MyWallet</Text>
       <Formik
-        initialValues={{email: '', password: ''}}
+        initialValues={{email: '', password: ''} as ILogin}
         validationSchema={loginSchema}
         onSubmit={sendData}>
         {({
@@ -47,6 +48,7 @@ function SignIn({navigation}: Props): JSX.Element {
         }) => (
           <>
             <CustomInput
+              errorMessage={errors.email}
               inputOption={{
                 editable: enableInput,
                 placeholder: 'E-mail',
@@ -57,10 +59,8 @@ function SignIn({navigation}: Props): JSX.Element {
                 onBlur: handleBlur('email'),
               }}
             />
-            {errors.email && (
-              <Text style={{fontSize: 10, color: 'red'}}>{errors.email}</Text>
-            )}
             <CustomInput
+              errorMessage={errors.password}
               inputOption={{
                 editable: enableInput,
                 placeholder: 'Senha',
@@ -71,21 +71,18 @@ function SignIn({navigation}: Props): JSX.Element {
                 onBlur: handleBlur('password'),
               }}
             />
-            {errors.password && (
-              <Text style={{fontSize: 10, color: 'red'}}>
-                {errors.password}
-              </Text>
-            )}
             <TouchableOpacity
               style={styles.button}
               onPress={handleSubmit}
               disabled={!isValid}>
-              <Text>Enter</Text>
+              <Text>Entrar</Text>
             </TouchableOpacity>
           </>
         )}
       </Formik>
-      <Text style={styles.info_text}>Primeira Vez? Cadastre-se!</Text>
+      <Link to={{screen: 'Signup'}} style={styles.info_text}>
+        Primeira Vez? Cadastre-se!
+      </Link>
     </Container>
   );
 }

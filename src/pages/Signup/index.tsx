@@ -1,5 +1,6 @@
 import {Formik} from 'formik';
 import React, {useState} from 'react';
+import {Link} from '@react-navigation/native';
 import {Text, TouchableOpacity} from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
@@ -45,6 +46,7 @@ function SignUp({navigation}: Props): JSX.Element {
         }) => (
           <>
             <CustomInput
+              errorMessage={errors.name}
               inputOption={{
                 editable: enableInput,
                 placeholder: 'Nome',
@@ -55,10 +57,8 @@ function SignUp({navigation}: Props): JSX.Element {
                 onBlur: handleBlur('name'),
               }}
             />
-            {errors.email && (
-              <Text style={{fontSize: 10, color: 'red'}}>{errors.name}</Text>
-            )}
             <CustomInput
+              errorMessage={errors.email}
               inputOption={{
                 editable: enableInput,
                 placeholder: 'E-mail',
@@ -69,10 +69,8 @@ function SignUp({navigation}: Props): JSX.Element {
                 onBlur: handleBlur('email'),
               }}
             />
-            {errors.email && (
-              <Text style={{fontSize: 10, color: 'red'}}>{errors.email}</Text>
-            )}
             <CustomInput
+              errorMessage={errors.password}
               inputOption={{
                 editable: enableInput,
                 placeholder: 'Senha',
@@ -83,13 +81,9 @@ function SignUp({navigation}: Props): JSX.Element {
                 onBlur: handleBlur('password'),
               }}
             />
-            {errors.password && (
-              <Text style={{fontSize: 10, color: 'red'}}>
-                {errors.password}
-              </Text>
-            )}
 
             <CustomInput
+              errorMessage={errors.confirmPassword}
               inputOption={{
                 editable: enableInput,
                 placeholder: 'Confirme a senha',
@@ -100,21 +94,18 @@ function SignUp({navigation}: Props): JSX.Element {
                 onBlur: handleBlur('confirmPassword'),
               }}
             />
-            {errors.confirmPassword && (
-              <Text style={{fontSize: 10, color: 'red'}}>
-                {errors.confirmPassword}
-              </Text>
-            )}
             <TouchableOpacity
               style={styles.button}
               onPress={handleSubmit}
               disabled={!isValid}>
-              <Text>Enter</Text>
+              <Text>Cadastrar</Text>
             </TouchableOpacity>
           </>
         )}
       </Formik>
-      <Text style={styles.info_text}>Primeira Vez? Cadastre-se!</Text>
+      <Link to={{screen: 'Signin'}} style={styles.info_text}>
+        Já tem uma conta? Entre agora!
+      </Link>
     </Container>
   );
 }
