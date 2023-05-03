@@ -1,6 +1,10 @@
 import {User} from '../../entities/User';
 
-export const users: User[] = [
+export interface UserDatabase extends User {
+  password: string;
+}
+
+export const users: UserDatabase[] = [
   {
     id: 0,
     name: 'Lucas',

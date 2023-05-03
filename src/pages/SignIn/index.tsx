@@ -7,13 +7,18 @@ import {ILogin} from '../../entities/User';
 import {loginUser} from '../../services/signin';
 import {Formik} from 'formik';
 import {loginSchema} from '../../schemas/singin';
+import {useDispatch} from 'react-redux';
+import {loguser} from '../../redux/feature/userSlices';
 
 function SignIn(): JSX.Element {
   const [enableInput, setEnableInput] = useState(true);
+  const dispatch = useDispatch();
+
   const sendData = async (userData: ILogin) => {
     setEnableInput(false);
     try {
-      await loginUser(userData);
+      const user = await loginUser(userData);
+      dispatch(loguser(user));
     } catch (e) {
       setEnableInput(true);
     }

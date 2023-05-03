@@ -4,9 +4,6 @@ import {styles} from './styles';
 
 export type CustomInputType = {
   inputOption?: TextInputProps;
-  //  state: T;
-  //  setState: React.Dispatch<React.SetStateAction<T>>;
-  //  name: keyof T;
 };
 
 function CustomInput({inputOption}: CustomInputType): JSX.Element {

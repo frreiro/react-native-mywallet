@@ -1,13 +1,14 @@
-import {ILogin} from '../../entities/User';
+import {ILogin, User} from '../../entities/User';
 import {users} from './users';
 
-export const logUserInMemory = (data: ILogin) =>
+export const logUserInMemory = (data: ILogin): Promise<User> =>
   new Promise((resolve, reject) => {
-    const user = users.find(
+    const userFound = users.find(
       user => user.email === data.email && user.password === data.password,
     );
-    if (!user) {
-      reject();
+    if (userFound) {
+      resolve(userFound);
+      return;
     }
-    resolve(user);
+    reject();
   });

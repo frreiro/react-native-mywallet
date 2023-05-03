@@ -4,7 +4,8 @@ import {logUserInMemory} from './fake/login';
 
 export const loginUser = async (data: ILogin) => {
   try {
-    await logUserInMemory(data);
+    const user = await logUserInMemory(data);
+    return user;
   } catch (e) {
     throw errorToast({
       title: 'Não foi possível fazer o login',
