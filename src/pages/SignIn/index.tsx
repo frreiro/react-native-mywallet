@@ -1,16 +1,21 @@
+import {Formik} from 'formik';
 import React, {useState} from 'react';
+import {useDispatch} from 'react-redux';
 import {Text, TouchableOpacity} from 'react-native';
+
 import Container from '../../layout/Container';
 import {styles} from './styles';
 import CustomInput from '../../components/customInput';
 import {ILogin} from '../../entities/User';
 import {loginUser} from '../../services/signin';
-import {Formik} from 'formik';
 import {loginSchema} from '../../schemas/singin';
-import {useDispatch} from 'react-redux';
 import {loguser} from '../../redux/feature/userSlices';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {StackParamList} from '../../App';
 
-function SignIn(): JSX.Element {
+type Props = NativeStackScreenProps<StackParamList, 'Signin'>;
+
+function SignIn({navigation}: Props): JSX.Element {
   const [enableInput, setEnableInput] = useState(true);
   const dispatch = useDispatch();
 
@@ -19,6 +24,7 @@ function SignIn(): JSX.Element {
     try {
       const user = await loginUser(userData);
       dispatch(loguser(user));
+      navigation.navigate('Home');
     } catch (e) {
       setEnableInput(true);
     }
