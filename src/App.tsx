@@ -6,10 +6,12 @@ import {Toast} from 'react-native-toast-message/lib/src/Toast';
 import {Provider} from 'react-redux';
 import store from './redux/store';
 import Home from './pages/Home';
+import SignUp from './pages/Signup';
 
 export type StackParamList = {
   Home: undefined;
   Signin: undefined;
+  Signup: undefined;
 };
 
 const Stack = createNativeStackNavigator<StackParamList>();
@@ -18,7 +20,10 @@ function App(): JSX.Element {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Navigator
+          screenOptions={{headerShown: false}}
+          initialRouteName="Signup">
+          <Stack.Screen name="Signup" component={SignUp} />
           <Stack.Screen name="Signin" component={SignIn} />
           <Stack.Screen name="Home" component={Home} />
         </Stack.Navigator>

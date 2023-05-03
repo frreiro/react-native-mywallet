@@ -1,30 +1,26 @@
 import {Formik} from 'formik';
 import React, {useState} from 'react';
-import {useDispatch} from 'react-redux';
 import {Text, TouchableOpacity} from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 import {styles} from './styles';
 import {StackParamList} from '../../App';
-import {ILogin} from '../../entities/User';
+import {ISignup} from '../../entities/User';
 import Container from '../../layout/Container';
-import {loginUser} from '../../services/signin';
-import {loginSchema} from '../../schemas/singin';
 import CustomInput from '../../components/customInput';
-import {loguser} from '../../redux/feature/userSlices';
+import {signupSchema} from '../../schemas/signup';
+import {createUser} from '../../services/signup';
 
-type Props = NativeStackScreenProps<StackParamList, 'Signin'>;
+type Props = NativeStackScreenProps<StackParamList, 'Signup'>;
 
-function SignIn({navigation}: Props): JSX.Element {
+function SignUp({navigation}: Props): JSX.Element {
   const [enableInput, setEnableInput] = useState(true);
-  const dispatch = useDispatch();
 
-  const sendData = async (userData: ILogin) => {
+  const sendData = async (userData: ISignup) => {
     setEnableInput(false);
     try {
-      const user = await loginUser(userData);
-      dispatch(loguser(user));
-      navigation.navigate('Home');
+      await createUser(userData);
+      navigation.navigate('Signin');
     } catch (e) {
       setEnableInput(true);
     }
@@ -34,8 +30,10 @@ function SignIn({navigation}: Props): JSX.Element {
     <Container>
       <Text>MyWallet</Text>
       <Formik
-        initialValues={{email: '', password: ''}}
-        validationSchema={loginSchema}
+        initialValues={
+          {email: '', password: '', name: '', confirmPassword: ''} as ISignup
+        }
+        validationSchema={signupSchema}
         onSubmit={sendData}>
         {({
           handleChange,
@@ -46,6 +44,20 @@ function SignIn({navigation}: Props): JSX.Element {
           isValid,
         }) => (
           <>
+            <CustomInput
+              inputOption={{
+                editable: enableInput,
+                placeholder: 'Nome',
+                textContentType: 'name',
+                keyboardType: 'default',
+                value: values.name,
+                onChangeText: handleChange('name'),
+                onBlur: handleBlur('name'),
+              }}
+            />
+            {errors.email && (
+              <Text style={{fontSize: 10, color: 'red'}}>{errors.name}</Text>
+            )}
             <CustomInput
               inputOption={{
                 editable: enableInput,
@@ -76,6 +88,23 @@ function SignIn({navigation}: Props): JSX.Element {
                 {errors.password}
               </Text>
             )}
+
+            <CustomInput
+              inputOption={{
+                editable: enableInput,
+                placeholder: 'Confirme a senha',
+                secureTextEntry: true,
+                textContentType: 'password',
+                value: values.confirmPassword,
+                onChangeText: handleChange('confirmPassword'),
+                onBlur: handleBlur('confirmPassword'),
+              }}
+            />
+            {errors.confirmPassword && (
+              <Text style={{fontSize: 10, color: 'red'}}>
+                {errors.confirmPassword}
+              </Text>
+            )}
             <TouchableOpacity
               style={styles.button}
               onPress={handleSubmit}
@@ -90,4 +119,4 @@ function SignIn({navigation}: Props): JSX.Element {
   );
 }
 
-export default SignIn;
+export default SignUp;
