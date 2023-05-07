@@ -1,38 +1,18 @@
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
-import SignIn from './pages/SignIn';
-import {Toast} from 'react-native-toast-message/lib/src/Toast';
 import {Provider} from 'react-redux';
-import store from './redux/store';
-import Home from './pages/Home';
-import SignUp from './pages/Signup';
-import Transaction from './pages/Transaction';
-import {TransactionType} from './entities/Transactions';
+import {Toast} from 'react-native-toast-message/lib/src/Toast';
+import {PersistGate} from 'redux-persist/integration/react';
 
-export type StackParamList = {
-  Home: undefined;
-  Signin: undefined;
-  Signup: undefined;
-  Transaction: {type: TransactionType};
-};
-
-const Stack = createNativeStackNavigator<StackParamList>();
+import Navigator from './components/Navigator';
+import {store, persistor} from './redux/store';
 
 function App(): JSX.Element {
   return (
     <Provider store={store}>
-      <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{headerShown: false}}
-          initialRouteName="Signup">
-          <Stack.Screen name="Signup" component={SignUp} />
-          <Stack.Screen name="Signin" component={SignIn} />
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="Transaction" component={Transaction} />
-        </Stack.Navigator>
-      </NavigationContainer>
-      <Toast />
+      <PersistGate loading={null} persistor={persistor}>
+        <Navigator />
+        <Toast />
+      </PersistGate>
     </Provider>
   );
 }

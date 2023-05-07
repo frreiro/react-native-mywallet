@@ -17,9 +17,13 @@ const userSlice = createSlice({
 
       Object.assign(state, newUser);
     },
+    unlinkLogin: state => {
+      state = {} as IUser;
+      return state;
+    },
   },
 });
 
-export const {loguser} = userSlice.actions;
+export const {loguser, unlinkLogin} = userSlice.actions;
 
 export default userSlice.reducer;
