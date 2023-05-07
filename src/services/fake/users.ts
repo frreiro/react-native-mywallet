@@ -1,6 +1,6 @@
-import {User} from '../../entities/User';
+import {IUser} from '../../entities/User';
 
-export interface UserDatabase extends User {
+export interface UserDatabase extends IUser {
   password: string;
 }
 

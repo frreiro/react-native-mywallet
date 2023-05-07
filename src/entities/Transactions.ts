@@ -2,7 +2,7 @@ import {InferType} from 'yup';
 import {transactionSchema} from '../schemas/transaction';
 
 export type TransactionType = 'in' | 'out';
-export type Transaction = {
+export type ITransaction = {
   userId: number;
   type: TransactionType;
   amount: number;

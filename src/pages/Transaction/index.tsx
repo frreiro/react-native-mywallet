@@ -7,11 +7,16 @@ import {StackParamList} from '../../App';
 import CustomInput from '../../components/customInput';
 import {Formik} from 'formik';
 import {transactionSchema} from '../../schemas/transaction';
-import {ITransactionForm, TransactionType} from '../../entities/Transactions';
+import {
+  ITransactionForm,
+  ITransaction,
+  TransactionType,
+} from '../../entities/Transactions';
 import {
   convertIntoCurrencyValue,
   formatIntoNumericFormat,
 } from '../../utils/convertIntoCurrencyInput';
+import {useAppSelector} from '../../redux/hooks';
 
 type TransactionProps = NativeStackScreenProps<StackParamList, 'Transaction'>;
 
@@ -30,6 +35,18 @@ const checkTrasactionType = (type: TransactionType) => {
 function Transaction({route}: TransactionProps): JSX.Element {
   const {type} = route.params;
   const {title} = checkTrasactionType(type);
+  const user = useAppSelector(state => state.user);
+
+  const sendTransaction = (inputData: ITransactionForm) => {
+    const transaction: ITransaction = {
+      amount: Number(inputData.amount),
+      description: inputData.description,
+      type: type,
+      userId: user.id,
+    };
+
+    console.log(transaction);
+  };
 
   return (
     <View>
@@ -37,7 +54,7 @@ function Transaction({route}: TransactionProps): JSX.Element {
       <Formik
         initialValues={{amount: '', description: ''} as ITransactionForm}
         validationSchema={transactionSchema}
-        onSubmit={values => console.log(values)}>
+        onSubmit={sendTransaction}>
         {({
           handleChange,
           handleBlur,

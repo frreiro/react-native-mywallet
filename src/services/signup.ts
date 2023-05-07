@@ -8,7 +8,7 @@ export const createUser = async (data: ISignup) => {
   } catch (e) {
     throw errorToast({
       title: 'Não foi possível criar o usuário',
-      message: 'Usuário não foi criado',
+      message: typeof e === 'string' ? e : 'Usuário não foi criado',
     });
   }
 };

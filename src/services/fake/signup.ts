@@ -1,13 +1,11 @@
 import {ISignup} from '../../entities/User';
 import {users} from './users';
 
-export const createUserInMemory = (data: ISignup): Promise<void> =>
+export const createUserInMemory = (data: ISignup): Promise<void | string> =>
   new Promise((resolve, reject) => {
-    const userFound = users.find(
-      user => user.email === data.email && user.password === data.password,
-    );
+    const userFound = users.find(user => user.email === data.email);
     if (userFound) {
-      reject('User already exists');
+      reject('Email já cadastrado');
       return;
     }
 

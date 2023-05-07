@@ -1,13 +1,13 @@
 import {PayloadAction, createSlice} from '@reduxjs/toolkit';
-import {User} from '../../entities/User';
+import {IUser} from '../../entities/User';
 
-const user: User = {} as User;
+const user: IUser = {} as IUser;
 
 const userSlice = createSlice({
   name: 'user',
   initialState: user,
   reducers: {
-    loguser: (state, action: PayloadAction<User>) => {
+    loguser: (state, action: PayloadAction<IUser>) => {
       console.log(state, action);
       const newUser = {
         id: action.payload.id,

@@ -2,7 +2,7 @@ import {InferType} from 'yup';
 import {loginSchema} from '../schemas/singin';
 import {signupSchema} from '../schemas/signup';
 
-export type User = {
+export type IUser = {
   id: number;
   email: string;
   name: string;

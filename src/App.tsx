@@ -25,7 +25,7 @@ function App(): JSX.Element {
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{headerShown: false}}
-          initialRouteName="Home">
+          initialRouteName="Signup">
           <Stack.Screen name="Signup" component={SignUp} />
           <Stack.Screen name="Signin" component={SignIn} />
           <Stack.Screen name="Home" component={Home} />

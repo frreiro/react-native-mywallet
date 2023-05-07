@@ -24,6 +24,7 @@ function SignIn({navigation}: Props): JSX.Element {
     setEnableInput(false);
     try {
       const user = await loginUser(userData);
+      //TODO: Salvar os dados do usuário em uma sessão local -> redux-persist ou asyncStorage
       dispatch(loguser(user));
       navigation.navigate('Home');
     } catch (e) {
