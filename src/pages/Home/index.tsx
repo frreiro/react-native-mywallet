@@ -1,33 +1,25 @@
 import React from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
-import {useAppDispatch, useAppSelector} from '../../redux/hooks';
+import {useAppSelector} from '../../redux/hooks';
 import {styles} from './styles';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {StackParamList} from '../../components/Navigator';
-import {unlinkLogin} from '../../redux/feature/userSlices';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useReduxLogout} from '../../redux/hooks/useLogout';
 
 type HomeProps = NativeStackScreenProps<StackParamList, 'Home'>;
 
 function Home({navigation}: HomeProps): JSX.Element {
   const user = useAppSelector(state => state.user);
-  const dispatch = useAppDispatch();
-  console.log(user);
 
-  const logout = async () => {
-    try {
-      await AsyncStorage.multiRemove(['user']);
-      dispatch(unlinkLogin());
-      navigation.navigate('Signin');
-    } catch (e) {}
-    console.log('Usuário removido com sucesso');
-  };
+  const {logUserOut} = useReduxLogout({
+    navigation: navigation,
+  });
 
   return (
     <View>
       <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
         <Text>Ola {user.name}</Text>
-        <TouchableOpacity style={{backgroundColor: 'red'}} onPress={logout}>
+        <TouchableOpacity style={{backgroundColor: 'red'}} onPress={logUserOut}>
           <Text>Sair da conta</Text>
         </TouchableOpacity>
       </View>

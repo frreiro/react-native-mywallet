@@ -5,12 +5,12 @@ import {Text, TouchableOpacity} from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 import {styles} from './styles';
-import {StackParamList} from '../../App';
 import {ISignup} from '../../entities/User';
 import Container from '../../layout/Container';
 import CustomInput from '../../components/customInput';
 import {signupSchema} from '../../schemas/signup';
 import {createUser} from '../../services/signup';
+import {StackParamList} from '../../components/Navigator';
 
 type Props = NativeStackScreenProps<StackParamList, 'Signup'>;
 

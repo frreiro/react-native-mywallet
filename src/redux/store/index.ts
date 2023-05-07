@@ -9,6 +9,7 @@ const persistConfig = {
   key: 'user',
   version: 1,
   storage: AsyncStorage,
+  whitelist: ['user'],
 };
 
 const rootReducer = combineReducers({
@@ -23,6 +24,7 @@ const store = configureStore({
 });
 
 const persistor = persistStore(store);
+
 export {store, persistor};
 
 export type RootState = ReturnType<typeof store.getState>;

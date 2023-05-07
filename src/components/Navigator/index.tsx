@@ -19,12 +19,12 @@ const Stack = createNativeStackNavigator<StackParamList>();
 
 function Navigator(): JSX.Element {
   const user = useAppSelector(state => state.user);
-
   const redirectIfAuth = () =>
-    user.id && user.email && user.name
+    user.id !== null && user.name && user.email
       ? ('Home' as keyof StackParamList)
       : ('Signup' as keyof StackParamList);
 
+  console.log(user, redirectIfAuth());
   return (
     <NavigationContainer>
       <Stack.Navigator

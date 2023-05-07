@@ -3,7 +3,6 @@ import {Text, TouchableOpacity, View} from 'react-native';
 import {styles} from './styles';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-import {StackParamList} from '../../App';
 import CustomInput from '../../components/customInput';
 import {Formik} from 'formik';
 import {transactionSchema} from '../../schemas/transaction';
@@ -17,6 +16,7 @@ import {
   formatIntoNumericFormat,
 } from '../../utils/convertIntoCurrencyInput';
 import {useAppSelector} from '../../redux/hooks';
+import {StackParamList} from '../../components/Navigator';
 
 type TransactionProps = NativeStackScreenProps<StackParamList, 'Transaction'>;
 
