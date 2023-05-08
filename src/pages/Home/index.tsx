@@ -5,6 +5,7 @@ import {styles} from './styles';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {StackParamList} from '../../components/Navigator';
 import {useReduxLogout} from '../../redux/hooks/useLogout';
+import TransactionsViewer from '../../components/TransactionsViewer';
 
 type HomeProps = NativeStackScreenProps<StackParamList, 'Home'>;
 
@@ -23,6 +24,7 @@ function Home({navigation}: HomeProps): JSX.Element {
           <Text>Sair da conta</Text>
         </TouchableOpacity>
       </View>
+      <TransactionsViewer />
       <TouchableOpacity
         style={styles.button}
         onPress={() => navigation.navigate('Transaction', {type: 'in'})}>

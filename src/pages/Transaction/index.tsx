@@ -17,6 +17,7 @@ import {
 } from '../../utils/convertIntoCurrencyInput';
 import {useAppSelector} from '../../redux/hooks';
 import {StackParamList} from '../../components/Navigator';
+import {useTransaction} from '../../redux/hooks/useTransaction';
 
 type TransactionProps = NativeStackScreenProps<StackParamList, 'Transaction'>;
 
@@ -32,20 +33,25 @@ const checkTrasactionType = (type: TransactionType) => {
   }
 };
 
-function Transaction({route}: TransactionProps): JSX.Element {
+function Transaction({navigation, route}: TransactionProps): JSX.Element {
   const {type} = route.params;
   const {title} = checkTrasactionType(type);
   const user = useAppSelector(state => state.user);
+  const {createNewTransaction} = useTransaction();
 
-  const sendTransaction = (inputData: ITransactionForm) => {
+  const sendTransaction = async (inputData: ITransactionForm) => {
     const transaction: ITransaction = {
       amount: Number(inputData.amount),
       description: inputData.description,
       type: type,
       userId: user.id,
+      date: new Date(),
+      id: new Date().getTime(),
     };
 
+    await createNewTransaction(transaction);
     console.log(transaction);
+    navigation.navigate('Home');
   };
 
   return (

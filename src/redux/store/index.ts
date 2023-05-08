@@ -3,6 +3,7 @@ import {persistReducer, persistStore} from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import userReducer from '../feature/userSlices';
 import thunk from 'redux-thunk';
+import transactionReducer from '../feature/transactionSlice';
 
 // persist configs
 const persistConfig = {
@@ -14,6 +15,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   user: userReducer,
+  transaction: transactionReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
