@@ -5,11 +5,12 @@ import {ISignup} from '../../models/User';
 export const createUserInDatabase = async (data: ISignup) => {
   const realm = await getRealm();
   try {
-    const users = realm.objects<User>('User');
-    const user = users.filtered(`email == '${data.email}'`);
-    console.log(user);
+    const users = realm
+      .objects<User>('User')
+      .filtered(`email == '${data.email}'`)
+      .toJSON();
 
-    if (user.length > 0) {
+    if (users.length > 0) {
       throw 'Email já cadastrado';
     }
 
