@@ -5,19 +5,19 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 import CustomInput from '../../components/customInput';
 import {Formik} from 'formik';
-import {transactionSchema} from '../../schemas/transaction';
+import {transactionSchema} from '../../schemas/transactionInputSchema';
 import {
   ITransactionForm,
   ITransaction,
   TransactionType,
-} from '../../entities/Transactions';
+} from '../../../entities/Transactions';
 import {
   convertIntoCurrencyValue,
   formatIntoNumericFormat,
 } from '../../utils/convertIntoCurrencyInput';
-import {useAppSelector} from '../../redux/hooks';
+import {useAppSelector} from '../../../redux/hooks';
 import {StackParamList} from '../../components/Navigator';
-import {useTransaction} from '../../redux/hooks/useTransaction';
+import {useTransaction} from '../../../redux/hooks/useTransaction';
 
 type TransactionProps = NativeStackScreenProps<StackParamList, 'Transaction'>;
 

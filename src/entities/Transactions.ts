@@ -1,5 +1,5 @@
 import {InferType} from 'yup';
-import {transactionSchema} from '../schemas/transaction';
+import {transactionSchema} from '../app/schemas/transactionInputSchema';
 
 export type TransactionType = 'in' | 'out';
 export type ITransaction = {

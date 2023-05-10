@@ -4,7 +4,7 @@ import {Toast} from 'react-native-toast-message/lib/src/Toast';
 import {PersistGate} from 'redux-persist/integration/react';
 
 import Navigator from './components/Navigator';
-import {store, persistor} from './redux/store';
+import {store, persistor} from '../redux/store';
 
 function App(): JSX.Element {
   return (

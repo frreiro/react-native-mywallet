@@ -2,7 +2,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {useAppDispatch} from '.';
 import {unlinkLogin} from '../feature/userSlices';
 import {persistor} from '../store';
-import {StackParamList} from '../../components/Navigator';
+import {StackParamList} from '../../app/components/Navigator';
 
 interface LogoutParams {
   navigation: NativeStackNavigationProp<StackParamList, keyof StackParamList>;

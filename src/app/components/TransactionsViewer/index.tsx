@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {Text, View} from 'react-native';
-import {useAppSelector} from '../../redux/hooks';
-import {useTransaction} from '../../redux/hooks/useTransaction';
+import {useAppSelector} from '../../../redux/hooks';
+import {useTransaction} from '../../../redux/hooks/useTransaction';
 import {convertIntoCurrencyValue} from '../../utils/convertIntoCurrencyInput';
 
 function TransactionsViewer() {

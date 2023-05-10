@@ -1,13 +1,13 @@
-import {errorToast} from '../config/toastConfig';
+import {errorToast} from '../app/config/toastConfig';
 import {ITransaction} from '../entities/Transactions';
-import {IUser} from '../entities/User';
+import {User} from '../models/User';
 import {
   saveTransactionInMemory,
   transactionInMemory,
 } from './fake/transactions';
 
 export const getUserTransactions = async (
-  userId: IUser['id'],
+  userId: User['_id'],
 ): Promise<ITransaction[]> => {
   return await transactionInMemory(userId);
 };

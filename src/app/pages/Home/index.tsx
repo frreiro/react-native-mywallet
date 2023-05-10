@@ -1,10 +1,10 @@
 import React from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
-import {useAppSelector} from '../../redux/hooks';
+import {useAppSelector} from '../../../redux/hooks';
 import {styles} from './styles';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {StackParamList} from '../../components/Navigator';
-import {useReduxLogout} from '../../redux/hooks/useLogout';
+import {useReduxLogout} from '../../../redux/hooks/useLogout';
 import TransactionsViewer from '../../components/TransactionsViewer';
 
 type HomeProps = NativeStackScreenProps<StackParamList, 'Home'>;

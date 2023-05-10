@@ -6,12 +6,12 @@ import {Link} from '@react-navigation/native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 import {styles} from './styles';
-import {ILogin} from '../../entities/User';
+import {ILogin} from '../../../entities/User';
 import Container from '../../layout/Container';
-import {loginUser} from '../../services/signin';
-import {loginSchema} from '../../schemas/singin';
+import {loginUser} from '../../../services/signin';
+import {loginSchema} from '../../schemas/singinInputSchema';
 import CustomInput from '../../components/customInput';
-import {loguser} from '../../redux/feature/userSlices';
+import {loguser} from '../../../redux/feature/userSlices';
 import {StackParamList} from '../../components/Navigator';
 
 type Props = NativeStackScreenProps<StackParamList, 'Signin'>;
