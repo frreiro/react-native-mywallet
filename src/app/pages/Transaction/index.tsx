@@ -6,11 +6,7 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import CustomInput from '../../components/customInput';
 import {Formik} from 'formik';
 import {transactionSchema} from '../../schemas/transactionInputSchema';
-//import {
-//  ITransactionForm,
-//  ITransaction,
-//  TransactionType,
-//} from '../../../entities/Transactions';
+
 import {
   convertIntoCurrencyValue,
   formatIntoNumericFormat,

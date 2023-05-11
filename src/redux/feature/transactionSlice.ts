@@ -7,7 +7,6 @@ const transaction: ITransactionAmount = {
   amount: 0,
 };
 
-//FIXME: Problema de estado por aquia
 const transactionSlice = createSlice({
   name: 'transaction',
   initialState: transaction,
