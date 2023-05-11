@@ -1,5 +1,5 @@
 import {User} from '../schemas/User';
-import getRealm from '../database/realmContext';
+import getRealm from '..';
 import {ISignup} from '../../models/User';
 
 export const createUserInDatabase = async (data: ISignup) => {

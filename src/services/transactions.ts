@@ -1,8 +1,8 @@
 import {errorToast} from '../app/config/toastConfig';
 import {ITransactionAmount, Transaction} from '../models/Transactions';
 import {User} from '../models/User';
-import {createTransactionInDatabase} from '../realm/services/createTransaction';
-import {getTransactionInDatabase} from '../realm/services/getTransactions';
+import {createTransactionInDatabase} from '../databases/services/createTransaction';
+import {getTransactionInDatabase} from '../databases/services/getTransactions';
 
 export const getUserTransactions = async (
   userId: User['_id'],

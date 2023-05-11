@@ -1,6 +1,6 @@
 import {errorToast} from '../app/config/toastConfig';
 import {ISignup} from '../models/User';
-import {createUserInDatabase} from '../realm/services/createUser';
+import {createUserInDatabase} from '../databases/services/createUser';
 
 export const createUser = async (data: ISignup) => {
   try {

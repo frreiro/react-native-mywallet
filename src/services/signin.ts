@@ -1,6 +1,6 @@
 import {errorToast} from '../app/config/toastConfig';
 import {ILogin} from '../models/User';
-import {logUserDatabase} from '../realm/services/logUser';
+import {logUserDatabase} from '../databases/services/logUser';
 
 export const loginUser = async (data: ILogin) => {
   try {

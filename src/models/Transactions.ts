@@ -1,6 +1,6 @@
 import {InferType} from 'yup';
 import {transactionSchema} from '../app/schemas/transactionInputSchema';
-import {Transaction as TransactionSchema} from '../realm/schemas/Transaction';
+import {Transaction as TransactionSchema} from '../databases/schemas/Transaction';
 
 export type TransactionType = 'in' | 'out';
 

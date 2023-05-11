@@ -1,5 +1,5 @@
 import {Transaction} from '../schemas/Transaction';
-import getRealm from '../database/realmContext';
+import getRealm from '..';
 import {Transaction as ITransaction} from '../../models/Transactions';
 import {User} from '../schemas/User';
 import {getAmount} from '../../utils/checkTypeAndModifyAmount';
