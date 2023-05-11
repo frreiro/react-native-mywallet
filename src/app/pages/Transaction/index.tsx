@@ -6,11 +6,11 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import CustomInput from '../../components/customInput';
 import {Formik} from 'formik';
 import {transactionSchema} from '../../schemas/transactionInputSchema';
-import {
-  ITransactionForm,
-  ITransaction,
-  TransactionType,
-} from '../../../entities/Transactions';
+//import {
+//  ITransactionForm,
+//  ITransaction,
+//  TransactionType,
+//} from '../../../entities/Transactions';
 import {
   convertIntoCurrencyValue,
   formatIntoNumericFormat,
@@ -18,6 +18,11 @@ import {
 import {useAppSelector} from '../../../redux/hooks';
 import {StackParamList} from '../../components/Navigator';
 import {useTransaction} from '../../../redux/hooks/useTransaction';
+import {
+  Transaction as ITransaction,
+  ITransactionForm,
+  TransactionType,
+} from '../../../models/Transactions';
 
 type TransactionProps = NativeStackScreenProps<StackParamList, 'Transaction'>;
 
@@ -44,13 +49,11 @@ function Transaction({navigation, route}: TransactionProps): JSX.Element {
       amount: Number(inputData.amount),
       description: inputData.description,
       type: type,
-      userId: user.id,
+      userId: user._id,
       date: new Date(),
-      id: new Date().getTime(),
     };
 
     await createNewTransaction(transaction);
-    console.log(transaction);
     navigation.navigate('Home');
   };
 

@@ -1,6 +1,6 @@
 import {useAppDispatch} from '.';
-import {ITransaction} from '../../entities/Transactions';
-import {IUser} from '../../entities/User';
+import {Transaction} from '../../models/Transactions';
+import {User} from '../../models/User';
 import {
   getUserTransactions,
   saveUserTransactions,
@@ -10,33 +10,22 @@ import {newTransaction, reloadTransactions} from '../feature/transactionSlice';
 export const useTransaction = () => {
   const dispatch = useAppDispatch();
 
-  const createNewTransaction = async (transaction: ITransaction) => {
+  const createNewTransaction = async (transaction: Transaction) => {
     await saveUserTransactions(transaction);
     dispatch(newTransaction(transaction));
   };
 
-  const getTransactions = async (userId: IUser['id']) => {
+  const getTransactions = async (userId: User['_id']) => {
     try {
       const transactions = await getUserTransactions(userId);
-      dispatch(reloadTransactions(transactions));
-    } catch (e) {}
-  };
-
-  const getUserAmount = (transactions: ITransaction[]) => {
-    const userAmount = transactions.reduce((iValue, transaction) => {
-      if (transaction.type === 'in') {
-        return iValue + transaction.amount;
-      } else {
-        return iValue - transaction.amount;
+      if (transactions) {
+        dispatch(reloadTransactions(transactions));
       }
-    }, 0);
-
-    return userAmount;
+    } catch (e) {}
   };
 
   return {
     createNewTransaction,
     getTransactions,
-    getUserAmount,
   };
 };

@@ -5,6 +5,7 @@ export class User extends Realm.Object<User> {
   name!: string;
   email!: string;
   password!: string;
+  amount?: number;
 
   static schema = {
     name: 'User',
@@ -16,6 +17,10 @@ export class User extends Realm.Object<User> {
       name: 'string',
       email: 'string',
       password: 'string',
+      amount: {
+        type: 'int',
+        default: () => 0,
+      },
     },
     primaryKey: '_id',
   };

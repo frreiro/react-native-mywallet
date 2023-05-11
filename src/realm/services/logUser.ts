@@ -1,7 +1,7 @@
 import {User as UserDatabase} from '../schemas/User';
 import {ILogin, User} from '../../models/User';
 
-import getRealm from '../infrastructure/realmContext';
+import getRealm from '../database/realmContext';
 
 export const logUserDatabase = async (
   data: ILogin,

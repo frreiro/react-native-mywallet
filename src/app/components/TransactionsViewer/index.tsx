@@ -8,26 +8,31 @@ function TransactionsViewer() {
   const user = useAppSelector(state => state.user);
   const transactions = useAppSelector(state => state.transaction);
 
-  const {getTransactions, getUserAmount} = useTransaction();
+  const {getTransactions} = useTransaction();
+
+  console.log('dentro do viewer', transactions);
+  console.log('dentro do viewer - amount', transactions.amount);
 
   useEffect(() => {
     (async () => {
       try {
-        await getTransactions(user.id);
-      } catch (e) {}
+        await getTransactions(user._id);
+      } catch (e) {
+        console.log(e);
+      }
     })();
-  }, [user.id, getTransactions]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user._id]);
 
-  console.log(getUserAmount(transactions));
   return (
     <View>
       <Text>Viewer aqui</Text>
-      {transactions.map(transaction => {
-        return <Text key={transaction.id}>{transaction.description}</Text>;
+      {transactions.transactions.map(transaction => {
+        return (
+          <Text key={String(transaction._id)}>{transaction.description}</Text>
+        );
       })}
-      <Text>
-        {convertIntoCurrencyValue(String(getUserAmount(transactions)))}
-      </Text>
+      <Text>{convertIntoCurrencyValue(String(transactions.amount))}</Text>
     </View>
   );
 }

@@ -5,7 +5,6 @@ import {logUserDatabase} from '../realm/services/logUser';
 export const loginUser = async (data: ILogin) => {
   try {
     const user = await logUserDatabase(data);
-    console.log(user);
     return user;
   } catch (e) {
     throw errorToast({
