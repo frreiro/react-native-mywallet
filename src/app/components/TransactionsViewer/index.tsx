@@ -1,8 +1,9 @@
 import React, {useEffect} from 'react';
-import {Text, View} from 'react-native';
+import {FlatList, Text, View} from 'react-native';
 import {useAppSelector} from '../../../redux/hooks';
 import {useTransaction} from '../../../redux/hooks/useTransaction';
 import {convertIntoCurrencyValue} from '../../utils/convertIntoCurrencyInput';
+import TransactionsItem from '../TransactionItem';
 
 function TransactionsViewer() {
   const user = useAppSelector(state => state.user);
@@ -23,12 +24,11 @@ function TransactionsViewer() {
 
   return (
     <View>
-      <Text>Viewer aqui</Text>
-      {transactions.transactions.map(transaction => {
-        return (
-          <Text key={String(transaction._id)}>{transaction.description}</Text>
-        );
-      })}
+      <FlatList
+        data={transactions.transactions}
+        renderItem={({item}) => <TransactionsItem transaction={item} />}
+        keyExtractor={item => String(item._id)}
+      />
       <Text>{convertIntoCurrencyValue(String(transactions.amount))}</Text>
     </View>
   );
