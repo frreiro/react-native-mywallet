@@ -12,10 +12,7 @@ export class Transaction extends Realm.Object<Transaction> {
   static schema = {
     name: 'Transaction',
     properties: {
-      _id: {
-        type: 'objectId',
-        default: () => new Realm.BSON.ObjectId(),
-      },
+      _id: 'objectId',
       userId: 'objectId',
       type: 'string',
       amount: 'int',

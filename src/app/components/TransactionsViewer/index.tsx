@@ -21,7 +21,6 @@ function TransactionsViewer() {
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user._id]);
-  console.log(transactions.transactions);
   return (
     <View style={styles.container}>
       <FlatList

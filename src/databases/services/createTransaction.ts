@@ -9,6 +9,7 @@ export const createTransactionInDatabase = async (data: ITransaction) => {
   try {
     realm.write(() => {
       const transaction: ITransaction = {
+        _id: data._id,
         amount: data.amount,
         description: data.description,
         type: data.type,

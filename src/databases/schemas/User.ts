@@ -10,10 +10,7 @@ export class User extends Realm.Object<User> {
   static schema = {
     name: 'User',
     properties: {
-      _id: {
-        type: 'objectId',
-        default: () => new Realm.BSON.ObjectId(),
-      },
+      _id: 'objectId',
       name: 'string',
       email: 'string',
       password: 'string',

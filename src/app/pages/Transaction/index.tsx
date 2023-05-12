@@ -43,6 +43,7 @@ function Transaction({navigation, route}: TransactionProps): JSX.Element {
 
   const sendTransaction = async (inputData: ITransactionForm) => {
     const transaction: ITransaction = {
+      _id: new Realm.BSON.ObjectId(),
       amount: Number(inputData.amount),
       description: inputData.description,
       type: type,

@@ -16,6 +16,7 @@ export const createUserInDatabase = async (data: ISignup) => {
 
     realm.write(() => {
       realm.create<User>('User', {
+        _id: new Realm.BSON.ObjectId(),
         email: data.email,
         name: data.name,
         password: data.password,

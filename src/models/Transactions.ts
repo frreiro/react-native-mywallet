@@ -7,10 +7,8 @@ export type TransactionType = 'in' | 'out';
 export interface Transaction
   extends Pick<
     TransactionSchema,
-    'amount' | 'date' | 'description' | 'userId' | 'type'
-  > {
-  _id?: Realm.BSON.ObjectId;
-}
+    '_id' | 'amount' | 'date' | 'description' | 'userId' | 'type'
+  > {}
 
 export interface ITransactionForm extends InferType<typeof transactionSchema> {}
 
