@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {GlobalStyles} from '../../../styles/GlobalStyles';
 
 export const styles = StyleSheet.create({
   button: {
@@ -12,5 +13,7 @@ export const styles = StyleSheet.create({
   info_text: {
     marginTop: 36,
     fontSize: 10,
+    fontFamily: GlobalStyles.fonts.secondary.bold,
+    color: GlobalStyles.colors.light,
   },
 });

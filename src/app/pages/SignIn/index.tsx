@@ -1,18 +1,18 @@
 import {Formik} from 'formik';
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
-import {Text, TouchableOpacity} from 'react-native';
 import {Link} from '@react-navigation/native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 import {styles} from './styles';
-import {ILogin} from '../../../entities/User';
-import Container from '../../layout/Container';
 import {loginUser} from '../../../services/signin';
 import {loginSchema} from '../../schemas/singinInputSchema';
 import CustomInput from '../../components/customInput';
 import {loguser} from '../../../redux/feature/userSlices';
 import {StackParamList} from '../../components/Navigator';
+import {ILogin} from '../../../models/User';
+import SubmitButton from '../../components/SubmitButton';
+import FormContainer from '../../layout/FormContainer';
 
 type Props = NativeStackScreenProps<StackParamList, 'Signin'>;
 
@@ -32,8 +32,7 @@ function SignIn({navigation}: Props): JSX.Element {
   };
 
   return (
-    <Container>
-      <Text>MyWallet</Text>
+    <FormContainer>
       <Formik
         initialValues={{email: '', password: ''} as ILogin}
         validationSchema={loginSchema}
@@ -71,19 +70,18 @@ function SignIn({navigation}: Props): JSX.Element {
                 onBlur: handleBlur('password'),
               }}
             />
-            <TouchableOpacity
-              style={styles.button}
+            <SubmitButton
+              title={'Entrar'}
               onPress={handleSubmit}
-              disabled={!isValid}>
-              <Text>Entrar</Text>
-            </TouchableOpacity>
+              disabled={!isValid}
+            />
           </>
         )}
       </Formik>
       <Link to={{screen: 'Signup'}} style={styles.info_text}>
         Primeira Vez? Cadastre-se!
       </Link>
-    </Container>
+    </FormContainer>
   );
 }
 

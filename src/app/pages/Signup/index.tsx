@@ -1,16 +1,16 @@
 import {Formik} from 'formik';
 import React, {useState} from 'react';
 import {Link} from '@react-navigation/native';
-import {Text, TouchableOpacity} from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 import {styles} from './styles';
-import Container from '../../layout/Container';
 import CustomInput from '../../components/customInput';
 import {signupSchema} from '../../schemas/signupInputSchema';
 import {createUser} from '../../../services/signup';
 import {StackParamList} from '../../components/Navigator';
 import {ISignup} from '../../../models/User';
+import FormContainer from '../../layout/FormContainer';
+import SubmitButton from '../../components/SubmitButton';
 
 type Props = NativeStackScreenProps<StackParamList, 'Signup'>;
 
@@ -29,8 +29,7 @@ function SignUp({navigation}: Props): JSX.Element {
   };
 
   return (
-    <Container>
-      <Text>MyWallet</Text>
+    <FormContainer>
       <Formik
         initialValues={
           {email: '', password: '', name: '', confirmPassword: ''} as ISignup
@@ -95,19 +94,18 @@ function SignUp({navigation}: Props): JSX.Element {
                 onBlur: handleBlur('confirmPassword'),
               }}
             />
-            <TouchableOpacity
-              style={styles.button}
+            <SubmitButton
               onPress={handleSubmit}
-              disabled={!isValid}>
-              <Text>Cadastrar</Text>
-            </TouchableOpacity>
+              disabled={!isValid}
+              title="Cadastrar"
+            />
           </>
         )}
       </Formik>
       <Link to={{screen: 'Signin'}} style={styles.info_text}>
         Já tem uma conta? Entre agora!
       </Link>
-    </Container>
+    </FormContainer>
   );
 }
 

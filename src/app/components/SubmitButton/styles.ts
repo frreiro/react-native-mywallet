@@ -15,10 +15,4 @@ export const styles = StyleSheet.create({
     fontFamily: GlobalStyles.fonts.secondary.bold,
     color: GlobalStyles.colors.light,
   },
-  info_text: {
-    marginTop: 36,
-    fontSize: 10,
-    fontFamily: GlobalStyles.fonts.secondary.bold,
-    color: GlobalStyles.colors.light,
-  },
 });

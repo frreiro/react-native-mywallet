@@ -5,6 +5,10 @@ import {logUserDatabase} from '../databases/services/logUser';
 export const loginUser = async (data: ILogin) => {
   try {
     const user = await logUserDatabase(data);
+
+    if (!user) {
+      throw 'Usuário não encontrado';
+    }
     return user;
   } catch (e) {
     throw errorToast({

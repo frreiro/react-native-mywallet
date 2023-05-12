@@ -1,5 +1,5 @@
 import React from 'react';
-import {TextInput, TextInputProps, Text} from 'react-native';
+import {TextInput, TextInputProps, Text, View} from 'react-native';
 import {styles} from './styles';
 
 export type CustomInputType = {
@@ -12,12 +12,17 @@ function CustomInput({
   errorMessage,
 }: CustomInputType): JSX.Element {
   return (
-    <>
-      <TextInput {...inputOption} style={styles.input} />
-      {errorMessage && (
-        <Text style={{fontSize: 10, color: 'red'}}>{errorMessage}</Text>
-      )}
-    </>
+    <View style={styles.container}>
+      {errorMessage && <Text style={styles.text_error}>*{errorMessage}</Text>}
+      <TextInput
+        {...inputOption}
+        style={
+          !errorMessage
+            ? styles.input
+            : {...styles.input, ...styles.input_error}
+        }
+      />
+    </View>
   );
 }
 
