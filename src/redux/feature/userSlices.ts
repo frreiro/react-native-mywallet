@@ -8,7 +8,6 @@ const userSlice = createSlice({
   initialState: user,
   reducers: {
     loguser: (state, action: PayloadAction<User>) => {
-      console.log(state, action);
       const newUser = {
         _id: action.payload._id,
         email: action.payload.email,

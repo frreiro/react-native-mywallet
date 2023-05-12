@@ -10,9 +10,6 @@ function TransactionsViewer() {
 
   const {getTransactions} = useTransaction();
 
-  console.log('dentro do viewer', transactions);
-  console.log('dentro do viewer - amount', transactions.amount);
-
   useEffect(() => {
     (async () => {
       try {

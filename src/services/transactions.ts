@@ -12,7 +12,6 @@ export const getUserTransactions = async (
 
 export const saveUserTransactions = async (transaction: Transaction) => {
   try {
-    console.log('aqui');
     await createTransactionInDatabase(transaction);
   } catch (e) {
     throw errorToast({

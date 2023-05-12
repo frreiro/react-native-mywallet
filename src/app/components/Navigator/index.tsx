@@ -1,12 +1,12 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {TransactionType} from '../../../entities/Transactions';
 import SignUp from '../../pages/Signup';
 import SignIn from '../../pages/SignIn';
 import Home from '../../pages/Home';
 import Transaction from '../../pages/Transaction';
 import {useAppSelector} from '../../../redux/hooks';
+import {TransactionType} from '../../../models/Transactions';
 
 export type StackParamList = {
   Home: undefined;
@@ -20,7 +20,7 @@ const Stack = createNativeStackNavigator<StackParamList>();
 function Navigator(): JSX.Element {
   const user = useAppSelector(state => state.user);
   const redirectIfAuth = () =>
-    user.id !== null && user.name && user.email
+    user._id !== null && user.name && user.email
       ? ('Home' as keyof StackParamList)
       : ('Signup' as keyof StackParamList);
 
