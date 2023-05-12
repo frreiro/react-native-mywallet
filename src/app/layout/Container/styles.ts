@@ -7,6 +7,7 @@ export const styles = StyleSheet.create({
     paddingTop: 20,
     paddingRight: 24,
     paddingLeft: 24,
+    paddingBottom: 20,
     backgroundColor: GlobalStyles.colors.primary,
   },
 });

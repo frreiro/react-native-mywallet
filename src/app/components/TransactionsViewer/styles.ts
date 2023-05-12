@@ -3,10 +3,11 @@ import {GlobalStyles} from '../../../styles/GlobalStyles';
 
 export const styles = StyleSheet.create({
   container: {
-    height: '60%',
+    height: '65%',
     backgroundColor: GlobalStyles.colors.light,
     borderRadius: 5,
     padding: 12,
+    marginBottom: 13,
   },
   result: {
     justifyContent: 'space-between',

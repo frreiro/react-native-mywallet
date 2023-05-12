@@ -1,13 +1,14 @@
 import React from 'react';
-import {Text, TouchableOpacity} from 'react-native';
 import {useAppSelector} from '../../../redux/hooks';
-import {styles} from './styles';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {StackParamList} from '../../components/Navigator';
 import {useReduxLogout} from '../../../redux/hooks/useLogout';
 import TransactionsViewer from '../../components/TransactionsViewer';
 import Container from '../../layout/Container';
 import {Header} from '../../components/Header';
+import TransactionButton from '../../components/TransactionButton';
+import {View} from 'react-native';
+import {styles} from './styles';
 
 type HomeProps = NativeStackScreenProps<StackParamList, 'Home'>;
 
@@ -22,16 +23,16 @@ function Home({navigation}: HomeProps): JSX.Element {
     <Container>
       <Header title={`Olá, ${user.name}`} onPress={logUserOut} />
       <TransactionsViewer />
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate('Transaction', {type: 'in'})}>
-        <Text>Nova Entrada</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate('Transaction', {type: 'out'})}>
-        <Text>Nova Saída</Text>
-      </TouchableOpacity>
+      <View style={styles.transaction_button_container}>
+        <TransactionButton
+          type="in"
+          onPress={() => navigation.navigate('Transaction', {type: 'in'})}
+        />
+        <TransactionButton
+          type="out"
+          onPress={() => navigation.navigate('Transaction', {type: 'out'})}
+        />
+      </View>
     </Container>
   );
 }
