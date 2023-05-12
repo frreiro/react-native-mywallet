@@ -4,7 +4,7 @@ import {Link} from '@react-navigation/native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 import {styles} from './styles';
-import CustomInput from '../../components/customInput';
+import CustomInput from '../../components/CustomInput';
 import {signupSchema} from '../../schemas/signupInputSchema';
 import {createUser} from '../../../services/signup';
 import {StackParamList} from '../../components/Navigator';

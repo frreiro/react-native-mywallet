@@ -1,7 +1,7 @@
 import React from 'react';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-import CustomInput from '../../components/customInput';
+import CustomInput from '../../components/CustomInput';
 import {Formik} from 'formik';
 import {transactionSchema} from '../../schemas/transactionInputSchema';
 

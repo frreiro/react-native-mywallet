@@ -7,7 +7,7 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {styles} from './styles';
 import {loginUser} from '../../../services/signin';
 import {loginSchema} from '../../schemas/singinInputSchema';
-import CustomInput from '../../components/customInput';
+import CustomInput from '../../components/CustomInput';
 import {loguser} from '../../../redux/feature/userSlices';
 import {StackParamList} from '../../components/Navigator';
 import {ILogin} from '../../../models/User';

@@ -34,7 +34,7 @@ export const convertIntoCurrencyValue: IConvertIntoCurrency = (
     .replace(/[(R$)\s]/g, '')
     .trim();
 
-  return !options?.showCurrencySign ? withoutCurrency : withCurrency;
+  return options?.showCurrencySign ? withoutCurrency : withCurrency;
 };
 
 export function formatIntoNumericFormat(value: string) {
