@@ -17,11 +17,6 @@ export const styles = StyleSheet.create({
     fontFamily: GlobalStyles.fonts.secondary.regular,
     color: GlobalStyles.colors.third,
   },
-
-  descriptio_text: {
-    fontFamily: GlobalStyles.fonts.secondary.regular,
-    color: GlobalStyles.colors.dark,
-  },
   amount_text: {
     fontFamily: GlobalStyles.fonts.secondary.regular,
   },
@@ -32,5 +27,20 @@ export const styles = StyleSheet.create({
 
   type_out: {
     color: GlobalStyles.colors.negative,
+  },
+
+  input_text: {
+    fontFamily: GlobalStyles.fonts.secondary.regular,
+    color: GlobalStyles.colors.dark,
+    margin: 0,
+    padding: 0,
+  },
+
+  edit_input: {
+    margin: 0,
+    padding: 0,
+  },
+  edit_background: {
+    backgroundColor: 'rgba(45, 255, 255,0.2)',
   },
 });

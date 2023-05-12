@@ -4,24 +4,29 @@ import {Transaction as ITransaction} from '../../models/Transactions';
 import {User} from '../schemas/User';
 import {getAmount} from '../../utils/checkTypeAndModifyAmount';
 
-export const createTransactionInDatabase = async (data: ITransaction) => {
+export const updateTransactionInDatabase = async (data: ITransaction) => {
   const realm = await getRealm();
   try {
     realm.write(() => {
-      const transaction: ITransaction = {
-        amount: data.amount,
-        description: data.description,
-        type: data.type,
-        userId: new Realm.BSON.ObjectId(data.userId),
-        date: data.date,
-      };
+      const transaction = realm.objectForPrimaryKey<Transaction>(
+        Transaction.schema.name,
+        new Realm.BSON.ObjectId(data._id),
+      );
 
-      realm.create<Transaction>('Transaction', transaction);
+      if (!transaction) {
+        throw 'Transação não identificado';
+      }
 
       const user = realm.objectForPrimaryKey<User>(
         User.schema.name,
         new Realm.BSON.ObjectId(data.userId),
       );
+
+      if (!user) {
+        throw 'Usuário não identificado';
+      }
+
+      transaction.description = data.description;
 
       if (user && user.amount !== undefined) {
         const transactions = realm

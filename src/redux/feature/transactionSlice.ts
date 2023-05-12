@@ -11,25 +11,46 @@ const transactionSlice = createSlice({
   name: 'transaction',
   initialState: transaction,
   reducers: {
-    reloadTransactions: (state, action: PayloadAction<ITransactionAmount>) => {
+    reloadTransactionsInMemory: (
+      state,
+      action: PayloadAction<ITransactionAmount>,
+    ) => {
       state.transactions = action.payload.transactions;
       state.amount = action.payload.amount;
     },
-    newTransaction: (state, action: PayloadAction<Transaction>) => {
+    createNewTransactionInMemory: (
+      state,
+      action: PayloadAction<Transaction>,
+    ) => {
       const transactionLoaded = action.payload;
       state.transactions.push(transactionLoaded);
-      state.amount = getAmount(transactionLoaded, state.amount);
+      state.amount = getAmount(state.transactions);
     },
-    deleteTransaction: (state, action: PayloadAction<Transaction>) => {
+    deleteTransactionInMemory: (state, action: PayloadAction<Transaction>) => {
       const transactionLoaded = action.payload;
       state.transactions = state.transactions.filter(
         transactionItem => transactionItem._id !== transactionLoaded._id,
       );
+      state.amount = getAmount(state.transactions);
+    },
+    updateTransactionInMemory: (state, action: PayloadAction<Transaction>) => {
+      const transactionLoaded = action.payload;
+      const transactionInMemory = state.transactions.find(
+        transactionItem => transactionItem._id === transactionLoaded._id,
+      );
+      if (transactionInMemory !== undefined) {
+        transactionInMemory.description = transactionLoaded.description;
+      }
+      state.amount = getAmount(state.transactions);
     },
   },
 });
 
-export const {reloadTransactions, newTransaction, deleteTransaction} =
-  transactionSlice.actions;
+export const {
+  reloadTransactionsInMemory,
+  createNewTransactionInMemory,
+  deleteTransactionInMemory,
+  updateTransactionInMemory,
+} = transactionSlice.actions;
 
 export default transactionSlice.reducer;

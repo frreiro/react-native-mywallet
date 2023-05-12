@@ -6,7 +6,13 @@ import {GlobalStyles} from '../../../styles/GlobalStyles';
 import {useTransaction} from '../../../redux/hooks/useTransaction';
 import {Transaction} from '../../../models/Transactions';
 
-function TransactionItemPainel({transaction}: {transaction: Transaction}) {
+function TransactionItemPainel({
+  transaction,
+  setIsEditing,
+}: {
+  transaction: Transaction;
+  setIsEditing: () => void;
+}) {
   const {removeTransaction} = useTransaction();
 
   const handleRemoveTransaction = async () => {
@@ -20,7 +26,7 @@ function TransactionItemPainel({transaction}: {transaction: Transaction}) {
       <TouchableOpacity onPress={handleRemoveTransaction}>
         <Icon name="trash" size={20} color={GlobalStyles.colors.dark} />
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={setIsEditing}>
         <Icon name="pencil" size={20} color={GlobalStyles.colors.dark} />
       </TouchableOpacity>
     </View>

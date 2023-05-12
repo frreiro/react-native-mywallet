@@ -2,6 +2,7 @@ import {Transaction} from '../schemas/Transaction';
 import getRealm from '..';
 import {Transaction as ITransaction} from '../../models/Transactions';
 import {User} from '../schemas/User';
+import {getAmount} from '../../utils/checkTypeAndModifyAmount';
 
 export const deleteTransactionInDatabase = async (data: ITransaction) => {
   const realm = await getRealm();
@@ -26,6 +27,14 @@ export const deleteTransactionInDatabase = async (data: ITransaction) => {
       }
       realm.delete(transaction);
       transaction = null;
+
+      if (user && user.amount !== undefined) {
+        const transactions = realm
+          .objects<Transaction>(Transaction.schema.name)
+          .filtered('userId = $0', new Realm.BSON.ObjectId(user?._id))
+          .toJSON() as unknown as Transaction[];
+        user.amount = getAmount(transactions);
+      }
     });
   } catch (e) {
     console.log(e);

@@ -5,11 +5,13 @@ import {
   deleteOneTransaction,
   getUserTransactions,
   saveUserTransactions,
+  upadateOneTransaction,
 } from '../../services/transactions';
 import {
-  deleteTransaction,
-  newTransaction,
-  reloadTransactions,
+  deleteTransactionInMemory,
+  createNewTransactionInMemory,
+  reloadTransactionsInMemory,
+  updateTransactionInMemory,
 } from '../feature/transactionSlice';
 
 export const useTransaction = () => {
@@ -17,14 +19,14 @@ export const useTransaction = () => {
 
   const createNewTransaction = async (transaction: Transaction) => {
     await saveUserTransactions(transaction);
-    dispatch(newTransaction(transaction));
+    dispatch(createNewTransactionInMemory(transaction));
   };
 
   const getTransactions = async (userId: User['_id']) => {
     try {
       const transactions = await getUserTransactions(userId);
       if (transactions) {
-        dispatch(reloadTransactions(transactions));
+        dispatch(reloadTransactionsInMemory(transactions));
       }
     } catch (e) {}
   };
@@ -32,14 +34,20 @@ export const useTransaction = () => {
   const removeTransaction = async (transaction: Transaction) => {
     try {
       await deleteOneTransaction(transaction);
-
-      dispatch(deleteTransaction(transaction));
+      dispatch(deleteTransactionInMemory(transaction));
     } catch (e) {}
   };
 
+  const updateTransaction = async (transaction: Transaction) => {
+    try {
+      await upadateOneTransaction(transaction);
+      dispatch(updateTransactionInMemory(transaction));
+    } catch (e) {}
+  };
   return {
     createNewTransaction,
     getTransactions,
     removeTransaction,
+    updateTransaction,
   };
 };
