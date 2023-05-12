@@ -4,8 +4,7 @@ import {GlobalStyles} from '../../../styles/GlobalStyles';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    paddingTop: 20,
     paddingRight: 24,
     paddingLeft: 24,
     backgroundColor: GlobalStyles.colors.primary,

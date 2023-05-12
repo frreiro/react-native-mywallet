@@ -1,11 +1,13 @@
 import React from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
+import {Text, TouchableOpacity} from 'react-native';
 import {useAppSelector} from '../../../redux/hooks';
 import {styles} from './styles';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {StackParamList} from '../../components/Navigator';
 import {useReduxLogout} from '../../../redux/hooks/useLogout';
 import TransactionsViewer from '../../components/TransactionsViewer';
+import Container from '../../layout/Container';
+import {Header} from '../../components/Header';
 
 type HomeProps = NativeStackScreenProps<StackParamList, 'Home'>;
 
@@ -17,13 +19,8 @@ function Home({navigation}: HomeProps): JSX.Element {
   });
 
   return (
-    <View>
-      <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <Text>Ola {user.name}</Text>
-        <TouchableOpacity style={{backgroundColor: 'red'}} onPress={logUserOut}>
-          <Text>Sair da conta</Text>
-        </TouchableOpacity>
-      </View>
+    <Container>
+      <Header title={`Olá, ${user.name}`} onPress={logUserOut} />
       <TransactionsViewer />
       <TouchableOpacity
         style={styles.button}
@@ -35,7 +32,7 @@ function Home({navigation}: HomeProps): JSX.Element {
         onPress={() => navigation.navigate('Transaction', {type: 'out'})}>
         <Text>Nova Saída</Text>
       </TouchableOpacity>
-    </View>
+    </Container>
   );
 }
 
