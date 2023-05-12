@@ -3,6 +3,7 @@ import {ITransactionAmount, Transaction} from '../models/Transactions';
 import {User} from '../models/User';
 import {createTransactionInDatabase} from '../databases/services/createTransaction';
 import {getTransactionInDatabase} from '../databases/services/getTransactions';
+import {deleteTransactionInDatabase} from '../databases/services/deleteTransaction';
 
 export const getUserTransactions = async (
   userId: User['_id'],
@@ -13,6 +14,17 @@ export const getUserTransactions = async (
 export const saveUserTransactions = async (transaction: Transaction) => {
   try {
     await createTransactionInDatabase(transaction);
+  } catch (e) {
+    throw errorToast({
+      title: 'Não foi possível realizar a transação',
+      message: typeof e === 'string' ? e : 'Erro interno',
+    });
+  }
+};
+
+export const deleteOneTransaction = async (transaction: Transaction) => {
+  try {
+    await deleteTransactionInDatabase(transaction);
   } catch (e) {
     throw errorToast({
       title: 'Não foi possível realizar a transação',

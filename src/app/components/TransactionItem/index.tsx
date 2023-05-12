@@ -19,8 +19,12 @@ function TransactionsItem({transaction}: {transaction: Transaction}) {
 
   return (
     <>
-      {isItemOptionVisible ? <TransactionItemPainel /> : <></>}
-      <TransactionItemPainel />
+      {isItemOptionVisible ? (
+        <TransactionItemPainel transaction={transaction} />
+      ) : (
+        <></>
+      )}
+      {/*<TransactionItemPainel transaction={transaction} />*/}
       <TouchableOpacity
         style={styles.container}
         onLongPress={() => setItemOptionVisible(true)}>

@@ -2,10 +2,15 @@ import {useAppDispatch} from '.';
 import {Transaction} from '../../models/Transactions';
 import {User} from '../../models/User';
 import {
+  deleteOneTransaction,
   getUserTransactions,
   saveUserTransactions,
 } from '../../services/transactions';
-import {newTransaction, reloadTransactions} from '../feature/transactionSlice';
+import {
+  deleteTransaction,
+  newTransaction,
+  reloadTransactions,
+} from '../feature/transactionSlice';
 
 export const useTransaction = () => {
   const dispatch = useAppDispatch();
@@ -24,8 +29,17 @@ export const useTransaction = () => {
     } catch (e) {}
   };
 
+  const removeTransaction = async (transaction: Transaction) => {
+    try {
+      await deleteOneTransaction(transaction);
+
+      dispatch(deleteTransaction(transaction));
+    } catch (e) {}
+  };
+
   return {
     createNewTransaction,
     getTransactions,
+    removeTransaction,
   };
 };

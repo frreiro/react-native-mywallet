@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
     backgroundColor: GlobalStyles.colors.third,
     borderRadius: 5,
     width: '20%',
-    opacity: 0.6,
+    opacity: 0.5,
     flexDirection: 'row',
     justifyContent: 'space-evenly',
   },
