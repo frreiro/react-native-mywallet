@@ -4,6 +4,7 @@ import {useAppSelector} from '../../../redux/hooks';
 import {useTransaction} from '../../../redux/hooks/useTransaction';
 import {convertIntoCurrencyValue} from '../../utils/convertIntoCurrencyInput';
 import TransactionsItem from '../TransactionItem';
+import {styles} from './styles';
 
 function TransactionsViewer() {
   const user = useAppSelector(state => state.user);
@@ -21,15 +22,24 @@ function TransactionsViewer() {
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user._id]);
-
   return (
-    <View>
+    <View style={styles.container}>
       <FlatList
         data={transactions.transactions}
         renderItem={({item}) => <TransactionsItem transaction={item} />}
         keyExtractor={item => String(item._id)}
       />
-      <Text>{convertIntoCurrencyValue(String(transactions.amount))}</Text>
+      <View style={styles.result}>
+        <Text style={styles.result_text}>SALDO</Text>
+        <Text
+          style={
+            transactions.amount > 0
+              ? {...styles.result_amount, ...styles.type_in}
+              : {...styles.result_amount, ...styles.type_out}
+          }>
+          {convertIntoCurrencyValue(String(transactions.amount))}
+        </Text>
+      </View>
     </View>
   );
 }

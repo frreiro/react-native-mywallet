@@ -3,28 +3,22 @@ import {GlobalStyles} from '../../../styles/GlobalStyles';
 
 export const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
+    height: '60%',
+    backgroundColor: GlobalStyles.colors.light,
+    borderRadius: 5,
+    padding: 12,
+  },
+  result: {
     justifyContent: 'space-between',
-  },
-
-  detailContainer: {
     flexDirection: 'row',
   },
-
-  date_text: {
-    marginRight: 20,
-    fontFamily: GlobalStyles.fonts.secondary.regular,
-    color: GlobalStyles.colors.third,
-  },
-
-  descriptio_text: {
-    fontFamily: GlobalStyles.fonts.secondary.regular,
+  result_text: {
+    fontFamily: GlobalStyles.fonts.secondary.bold,
     color: GlobalStyles.colors.dark,
   },
-  amount_text: {
+  result_amount: {
     fontFamily: GlobalStyles.fonts.secondary.regular,
   },
-
   type_in: {
     color: GlobalStyles.colors.positive,
   },

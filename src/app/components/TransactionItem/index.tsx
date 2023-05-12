@@ -9,10 +9,15 @@ function TransactionsItem({transaction}: {transaction: Transaction}) {
   return (
     <View style={styles.container}>
       <View style={styles.detailContainer}>
-        <Text style={styles.dateText}>{formatDate(transaction.date)}</Text>
-        <Text style={styles.descriptioText}>{transaction.description}</Text>
+        <Text style={styles.date_text}>{formatDate(transaction.date)}</Text>
+        <Text style={styles.descriptio_text}>{transaction.description}</Text>
       </View>
-      <Text style={styles.amountText}>
+      <Text
+        style={
+          transaction.type === 'in'
+            ? {...styles.amount_text, ...styles.type_in}
+            : {...styles.amount_text, ...styles.type_out}
+        }>
         {convertIntoCurrencyValue(String(transaction.amount), true)}
       </Text>
     </View>
