@@ -12,4 +12,7 @@ export const styles = StyleSheet.create({
     fontSize: 25,
     color: GlobalStyles.colors.light,
   },
+  button_icon: {
+    justifyContent: 'center',
+  },
 });

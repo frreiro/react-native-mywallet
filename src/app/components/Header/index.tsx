@@ -1,6 +1,8 @@
 import {Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {styles} from './styles';
+import Icon from 'react-native-vector-icons/Ionicons';
+import {GlobalStyles} from '../../../styles/GlobalStyles';
 
 export interface IHeader {
   onPress?: () => void;
@@ -12,10 +14,12 @@ export const Header = (props: IHeader): JSX.Element => {
     <View style={styles.container}>
       <Text style={styles.title}>{props.title}</Text>
       {props.onPress && (
-        <TouchableOpacity
-          style={{backgroundColor: 'red'}}
-          onPress={props.onPress}>
-          <Text>Sair da conta</Text>
+        <TouchableOpacity style={styles.button_icon} onPress={props.onPress}>
+          <Icon
+            name="log-out-outline"
+            size={35}
+            color={GlobalStyles.colors.light}
+          />
         </TouchableOpacity>
       )}
     </View>
