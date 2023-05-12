@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginBottom: 22,
   },
   title: {
     fontFamily: GlobalStyles.fonts.secondary.bold,

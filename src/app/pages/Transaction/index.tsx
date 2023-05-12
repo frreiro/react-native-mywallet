@@ -1,6 +1,4 @@
 import React from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
-import {styles} from './styles';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 import CustomInput from '../../components/customInput';
@@ -19,6 +17,9 @@ import {
   ITransactionForm,
   TransactionType,
 } from '../../../models/Transactions';
+import Container from '../../layout/Container';
+import {Header} from '../../components/Header';
+import SubmitButton from '../../components/SubmitButton';
 
 type TransactionProps = NativeStackScreenProps<StackParamList, 'Transaction'>;
 
@@ -54,8 +55,8 @@ function Transaction({navigation, route}: TransactionProps): JSX.Element {
   };
 
   return (
-    <View>
-      <Text>Nova {title}</Text>
+    <Container>
+      <Header title={`Nova ${title}`} />
       <Formik
         initialValues={{amount: '', description: ''} as ITransactionForm}
         validationSchema={transactionSchema}
@@ -92,19 +93,18 @@ function Transaction({navigation, route}: TransactionProps): JSX.Element {
                 onBlur: handleBlur('description'),
               }}
             />
-            <TouchableOpacity
-              style={styles.button}
+            <SubmitButton
+              title={`Salvar ${title}`}
               onPress={() => {
                 values.amount = formatIntoNumericFormat(values.amount);
                 handleSubmit();
               }}
-              disabled={!isValid}>
-              <Text>Salvar {title}</Text>
-            </TouchableOpacity>
+              disabled={!isValid}
+            />
           </>
         )}
       </Formik>
-    </View>
+    </Container>
   );
 }
 
