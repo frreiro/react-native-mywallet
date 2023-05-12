@@ -1,10 +1,19 @@
-export function convertIntoCurrencyValue(
+export type ConvertIntoCurrencyOptions = {
+  showValueOnZero?: boolean;
+  showCurrencySign?: boolean;
+};
+export type IConvertIntoCurrency = (
   value: string,
-  noCurrency: boolean = false,
-) {
+  options?: ConvertIntoCurrencyOptions,
+) => string | undefined;
+
+export const convertIntoCurrencyValue: IConvertIntoCurrency = (
+  value,
+  options?,
+) => {
   const normalize = Number(formatIntoNumericFormat(value));
 
-  if (!normalize) {
+  if (!normalize && !options?.showValueOnZero) {
     return undefined;
   }
 
@@ -25,8 +34,8 @@ export function convertIntoCurrencyValue(
     .replace(/[(R$)\s]/g, '')
     .trim();
 
-  return noCurrency ? withoutCurrency : withCurrency;
-}
+  return !options?.showCurrencySign ? withoutCurrency : withCurrency;
+};
 
 export function formatIntoNumericFormat(value: string) {
   const findDotCommanAndSignRegex = /[.,;(R$)\s]/g;

@@ -18,7 +18,9 @@ function TransactionsItem({transaction}: {transaction: Transaction}) {
             ? {...styles.amount_text, ...styles.type_in}
             : {...styles.amount_text, ...styles.type_out}
         }>
-        {convertIntoCurrencyValue(String(transaction.amount), true)}
+        {convertIntoCurrencyValue(String(transaction.amount), {
+          showCurrencySign: true,
+        })}
       </Text>
     </View>
   );

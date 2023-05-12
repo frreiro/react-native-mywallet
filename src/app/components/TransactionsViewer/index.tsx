@@ -11,7 +11,6 @@ function TransactionsViewer() {
   const transactions = useAppSelector(state => state.transaction);
 
   const {getTransactions} = useTransaction();
-
   useEffect(() => {
     (async () => {
       try {
@@ -33,11 +32,13 @@ function TransactionsViewer() {
         <Text style={styles.result_text}>SALDO</Text>
         <Text
           style={
-            transactions.amount > 0
+            transactions.amount >= 0
               ? {...styles.result_amount, ...styles.type_in}
               : {...styles.result_amount, ...styles.type_out}
           }>
-          {convertIntoCurrencyValue(String(transactions.amount))}
+          {convertIntoCurrencyValue(String(transactions.amount), {
+            showValueOnZero: true,
+          })}
         </Text>
       </View>
     </View>

@@ -88,6 +88,7 @@ function Transaction({navigation, route}: TransactionProps): JSX.Element {
                 placeholder: 'Descrição',
                 textContentType: 'none',
                 keyboardType: 'default',
+                maxLength: 13,
                 value: values.description,
                 onChangeText: handleChange('description'),
                 onBlur: handleBlur('description'),
