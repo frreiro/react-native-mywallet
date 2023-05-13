@@ -30,7 +30,13 @@ MyWallet is a virtual wallet application to organize your finances, allowing you
    <img height='400px'src="https://github.com/frreiro/react-native-mywallet/assets/98192816/720a8a81-3979-40fd-9a48-3c63c6cf7609">
 </p><br>
 
+## 📌 Features
 
+- [x] User signup
+- [x] User login
+- [x] Read the user transactions
+- [x] Remove transaction
+- [x] Edit the transaction description
 
 ## 📦 Installation
 
@@ -62,11 +68,4 @@ To run in a development mode:
 ```bash
 $ npx react-native start
 ```
-## 📌 Features
-
-- [x] User signup
-- [x] User login
-- [x] Read the user transactions
-- [x] Remove transaction
-- [x] Edit the transaction description
 
