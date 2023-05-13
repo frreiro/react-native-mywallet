@@ -66,5 +66,6 @@ $ npx react-native start
     <img height='400px'src="https://github.com/frreiro/react-native-mywallet/assets/98192816/3a38d9f6-8f67-40e2-bf60-49ad7e7f3019">
     <img height='400px'src="https://github.com/frreiro/react-native-mywallet/assets/98192816/6e6712c4-a342-45dd-b58c-20d3dc05c9b5">
    <img height='400px'src="https://github.com/frreiro/react-native-mywallet/assets/98192816/e995c927-89eb-4cfb-80be-d37c6e4002fe">
+   <img height='400px'src="https://github.com/frreiro/react-native-mywallet/assets/98192816/720a8a81-3979-40fd-9a48-3c63c6cf7609">
 </p><br>
 
