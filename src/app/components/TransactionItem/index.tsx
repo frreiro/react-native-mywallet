@@ -17,11 +17,18 @@ function TransactionsItem({transaction}: {transaction: Transaction}) {
 
   const handleEdit = () => {
     setIsEditingDescription(true);
+    setItemOptionVisible(true);
     setTimeout(() => inputRef.current?.focus(), 0); //TImeout necessário pois naõ dava tempo do ref reconhcer o componente
+  };
+
+  const handleLongPress = () => {
+    setItemOptionVisible(true);
+    handleEdit();
   };
 
   const handleFinishEditing = () => {
     setIsEditingDescription(false);
+    setItemOptionVisible(false);
     const newTransaction: Transaction = {
       _id: transaction._id,
       amount: transaction.amount,
@@ -36,12 +43,6 @@ function TransactionsItem({transaction}: {transaction: Transaction}) {
   };
 
   useEffect(() => {
-    if (isItemOptionVisible) {
-      setTimeout(() => {
-        setItemOptionVisible(false);
-      }, 3000);
-    }
-
     if (isEditingDescription) {
       const editTimeout = setTimeout(() => {
         handleFinishEditing();
@@ -67,7 +68,7 @@ function TransactionsItem({transaction}: {transaction: Transaction}) {
             ? {...styles.container, ...styles.edit_background}
             : styles.container
         }
-        onLongPress={() => setItemOptionVisible(true)}>
+        onLongPress={handleLongPress}>
         <View style={styles.detailContainer}>
           <Text style={styles.date_text}>{formatDate(transaction.date)}</Text>
           <TextInput

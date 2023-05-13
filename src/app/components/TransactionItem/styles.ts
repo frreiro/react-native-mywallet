@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: 5,
+    padding: 10,
   },
 
   detailContainer: {
@@ -41,6 +42,7 @@ export const styles = StyleSheet.create({
     padding: 0,
   },
   edit_background: {
-    backgroundColor: 'rgba(45, 255, 255,0.2)',
+    backgroundColor: 'rgba(255, 240, 0,0.2)',
+    borderRadius: 5,
   },
 });
