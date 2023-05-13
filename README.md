@@ -19,6 +19,19 @@ MyWallet is a virtual wallet application to organize your finances, allowing you
 - [Formik](https://formik.org/)
 - [Yup](https://github.com/jquense/yup)
 
+## 🎨 Screenshots
+
+<p align="center">
+    <img height='250px' src="https://github.com/frreiro/react-native-mywallet/assets/98192816/1ec00493-40ad-438f-ada8-5b6143b28174">
+    <img height='250px'src="https://github.com/frreiro/react-native-mywallet/assets/98192816/da3c31e5-d13f-44a2-ac92-a34f64900900">
+    <img height='250px'src="https://github.com/frreiro/react-native-mywallet/assets/98192816/3a38d9f6-8f67-40e2-bf60-49ad7e7f3019">
+   <img height='250px'src="https://github.com/frreiro/react-native-mywallet/assets/98192816/e995c927-89eb-4cfb-80be-d37c6e4002fe">
+   <img height='250px'src="https://github.com/frreiro/react-native-mywallet/assets/98192816/6e6712c4-a342-45dd-b58c-20d3dc05c9b5">
+   <img height='250px'src="https://github.com/frreiro/react-native-mywallet/assets/98192816/720a8a81-3979-40fd-9a48-3c63c6cf7609">
+</p><br>
+
+
+
 ## 📦 Installation
 
 Clone the repository.
@@ -56,16 +69,4 @@ $ npx react-native start
 - [x] Read the user transactions
 - [x] Remove transaction
 - [x] Edit the transaction description
-
-
-## 🎨 Screenshots
-
-<p align="center">
-    <img height='400px' src="https://github.com/frreiro/react-native-mywallet/assets/98192816/1ec00493-40ad-438f-ada8-5b6143b28174">
-    <img height='400px'src="https://github.com/frreiro/react-native-mywallet/assets/98192816/da3c31e5-d13f-44a2-ac92-a34f64900900">
-    <img height='400px'src="https://github.com/frreiro/react-native-mywallet/assets/98192816/3a38d9f6-8f67-40e2-bf60-49ad7e7f3019">
-   <img height='400px'src="https://github.com/frreiro/react-native-mywallet/assets/98192816/e995c927-89eb-4cfb-80be-d37c6e4002fe">
-   <img height='400px'src="https://github.com/frreiro/react-native-mywallet/assets/98192816/6e6712c4-a342-45dd-b58c-20d3dc05c9b5">
-   <img height='400px'src="https://github.com/frreiro/react-native-mywallet/assets/98192816/720a8a81-3979-40fd-9a48-3c63c6cf7609">
-</p><br>
 
